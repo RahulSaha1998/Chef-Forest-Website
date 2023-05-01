@@ -5,7 +5,15 @@ import { AuthContext } from '../../providers/AuthProviders';
 
 const Header = () => {
 
-    const authInfo = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then()
+            .catch(error => {
+                console.log(error)
+            })
+    }
 
     return (
         <Container>
@@ -19,23 +27,29 @@ const Header = () => {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Navbar.Brand>
+                            <Navbar.Brand className='mt-1'>
                                 <Link to='/' className='text-decoration-none'>Home</Link>
                             </Navbar.Brand>
 
-                            <Navbar.Brand>
+                            <Navbar.Brand className='mt-1'>
                                 <Link to='/blog' className='text-decoration-none'>Blog</Link>
                             </Navbar.Brand>
-                            <Navbar.Brand>
-                                <Link to='/login' className='text-decoration-none'>Login</Link>
-                            </Navbar.Brand>
-                           
-                           
-                            
+                        
                         </Nav>
                         <Form className="d-flex">
-                            <img style={{height: '40px'}} src="https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png" alt="" />
-                            <Button variant="outline-success"><Link to='/login'className='text-decoration-none' >Login</Link></Button>
+
+                            {
+                                user ?
+                                    <>
+                                        <img style={{ height: '40px' }} src="https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png" alt="" />
+
+                                        <Navbar.Brand>
+                                            <span>{user.email}</span>
+                                        </Navbar.Brand>
+                                        <Button onClick={handleLogOut} variant="outline-success">  Logout</Button>
+                                    </>
+                                    : <Button variant="outline-success"><Link to='/login' className='text-decoration-none' >Login</Link></Button>
+                            }
                         </Form>
                     </Navbar.Collapse>
                 </Container>
