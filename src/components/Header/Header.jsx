@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Container, Nav, Navbar, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProviders';
 
 const Header = () => {
+
+    const authInfo = useContext(AuthContext)
+
     return (
         <Container>
             <Navbar bg="light" expand="lg">
@@ -25,15 +29,13 @@ const Header = () => {
                             <Navbar.Brand>
                                 <Link to='/login' className='text-decoration-none'>Login</Link>
                             </Navbar.Brand>
-                            <Navbar.Brand>
-                                <Link to='/register' className='text-decoration-none'>Registration</Link>
-                            </Navbar.Brand>
-                            
+                           
+                           
                             
                         </Nav>
                         <Form className="d-flex">
                             <img style={{height: '40px'}} src="https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png" alt="" />
-                            <Button variant="outline-success">Login</Button>
+                            <Button variant="outline-success"><Link to='/login'className='text-decoration-none' >Login</Link></Button>
                         </Form>
                     </Navbar.Collapse>
                 </Container>
