@@ -2,12 +2,13 @@ import React, { useContext } from 'react';
 import { Button, Card, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
+import { FaGoogle, FaGithub, FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 
 
 const Login = () => {
 
-    const {signIn} = useContext(AuthContext);
+    const { signIn, signInWithGoogle } = useContext(AuthContext);
 
     const handelLogin = (event) => {
         event.preventDefault()
@@ -25,6 +26,17 @@ const Login = () => {
             .catch(error => {
                 console.log(error);
             })
+    }
+
+    const handleGoogleSignIn = () =>{
+        signInWithGoogle()
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+        })
+        .catch(error => {
+            console.log(error);
+        })
     }
 
     return (
@@ -45,20 +57,25 @@ const Login = () => {
                         <Form.Control type="password" name='password' placeholder="Password" required />
                     </Form.Group>
 
-                    <Button variant="primary" type="submit">
-                        Login
-                    </Button>
-                    
-                    <br />
-                    <Form.Text className="text-secondary">
-                        Don't Have an Account? <Link to="/register">Register</Link>
-                    </Form.Text>
-                    <Form.Text className="text-success">
+                    <div>
+                        <div>
+                            <Button variant="primary" type="submit">
+                                Login
+                            </Button>
+                            <br />
+                            <Form.Text className="text-secondary">
+                                Don't Have an Account? <Link to="/register">Register</Link>
+                            </Form.Text>
+                        </div>
+                        <br />
+                        <div>
+                            <Button onClick={handleGoogleSignIn} className='mb-2' variant="outline-primary"> <FaGoogle /> Login with Google</Button>
+                            <br />
+                            <Button variant="outline-secondary"> <FaGithub></FaGithub> Login with Github</Button>
+                        </div>
+                    </div>
 
-                    </Form.Text>
-                    <Form.Text className="text-danger">
 
-                    </Form.Text>
                 </Form>
             </Card>
 

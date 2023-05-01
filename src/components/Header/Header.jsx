@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Button, Container, Nav, Navbar, Form } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar, Form, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 
@@ -37,14 +37,14 @@ const Header = () => {
                         
                         </Nav>
                         <Form className="d-flex">
-
                             {
                                 user ?
                                     <>
-                                        <img style={{ height: '40px' }} src="https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png" alt="" />
+                                        <Image style={{ height: '40px' }} src={user?.photoURL}
+                                        roundedCircle/>
 
                                         <Navbar.Brand>
-                                            <span>{user.email}</span>
+                                            <span>{user?.displayName}</span>
                                         </Navbar.Brand>
                                         <Button onClick={handleLogOut} variant="outline-success">  Logout</Button>
                                     </>
