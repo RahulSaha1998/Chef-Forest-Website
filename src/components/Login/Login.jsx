@@ -8,7 +8,7 @@ import { FaGoogle, FaGithub, FaFacebook, FaTwitter, FaInstagram } from 'react-ic
 
 const Login = () => {
 
-    const { signIn, signInWithGoogle } = useContext(AuthContext);
+    const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
 
     const handelLogin = (event) => {
         event.preventDefault()
@@ -28,15 +28,26 @@ const Login = () => {
             })
     }
 
-    const handleGoogleSignIn = () =>{
+    const handleGoogleSignIn = () => {
         signInWithGoogle()
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
-        })
-        .catch(error => {
-            console.log(error);
-        })
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+    const handleGithubSignIn = () => {
+        signInWithGithub()
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     return (
@@ -71,7 +82,9 @@ const Login = () => {
                         <div>
                             <Button onClick={handleGoogleSignIn} className='mb-2' variant="outline-primary"> <FaGoogle /> Login with Google</Button>
                             <br />
-                            <Button variant="outline-secondary"> <FaGithub></FaGithub> Login with Github</Button>
+                            <Button
+                                onClick={handleGithubSignIn}
+                                variant="outline-secondary"> <FaGithub></FaGithub> Login with Github</Button>
                         </div>
                     </div>
 
