@@ -18,7 +18,7 @@ const Home = () => {
                     <Banner></Banner>
                 </div>
                 <div>
-                    <h2 className='text-center mt-5'>Chef Section: {allData.length}</h2>
+                    <h3 className='text-center mt-5'>Chef Section</h3>
                     <hr />
                     <div className='layout' >
                     {

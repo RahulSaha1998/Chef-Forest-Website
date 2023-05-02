@@ -3,7 +3,7 @@ import { Carousel } from 'react-bootstrap';
 
 const Banner = () => {
     return (
-        <Carousel>
+        <Carousel className='shadow bg-white rounded'>
             <Carousel.Item>
                 <div style={{ height: '500px' }}>
                     <img

@@ -17,7 +17,7 @@ const Header = () => {
 
     return (
         <Container>
-            <Navbar bg="light" expand="lg">
+            <Navbar bg="light" expand="lg" className='shadow bg-white mb-5 rounded'>
                 <Container fluid>
                     <Navbar.Brand href="#"><h2>RainForest Cafe</h2></Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
