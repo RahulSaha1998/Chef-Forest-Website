@@ -7,19 +7,23 @@ import { AuthContext } from '../../providers/AuthProviders';
 
 const Registration = () => {
 
-    const { registerUser } = useContext(AuthContext);
+    const { registerUser, updateUserData } = useContext(AuthContext);
 
     const handelRegister = (event) => {
 
         event.preventDefault()
         const form = event.target;
         const name = form.name.value;
+        const photoURL = form.photo.value;
+        console.log(photoURL);
         const email = form.email.value;
         const password = form.password.value;
+
 
         registerUser(email, password)
             .then(result => {
                 const loggedUser = result.user;
+                updateUserData(name, photoURL);
                 console.log(loggedUser);
                 form.reset();
             })

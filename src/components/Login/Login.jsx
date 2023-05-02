@@ -8,7 +8,11 @@ import { FaGoogle, FaGithub, FaFacebook, FaTwitter, FaInstagram } from 'react-ic
 
 const Login = () => {
 
-    const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
+    const { signIn, signInWithGoogle, signInWithGithub,loading } = useContext(AuthContext);
+
+    if(loading){
+        return <Loader></Loader>
+    }
 
     const handelLogin = (event) => {
         event.preventDefault()

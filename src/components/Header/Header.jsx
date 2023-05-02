@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Button, Container, Nav, Navbar, Form, Image } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar, Form, Image, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 
@@ -34,19 +34,22 @@ const Header = () => {
                             <Navbar.Brand className='mt-1'>
                                 <Link to='/blog' className='text-decoration-none'>Blog</Link>
                             </Navbar.Brand>
-                        
+
                         </Nav>
                         <Form className="d-flex">
                             {
                                 user ?
                                     <>
-                                        <Image style={{ height: '40px' }} src={user?.photoURL}
-                                        roundedCircle/>
+                                        <OverlayTrigger
+                                            placement="bottom"
+                                            overlay={<Tooltip id="user-display-name">{user?.displayName}</Tooltip>}
+                                        >
+                                            <Image style={{ height: '40px' }} src={user?.photoURL} roundedCircle />
+                                        </OverlayTrigger>
 
-                                        <Navbar.Brand>
-                                            <span>{user?.displayName}</span>
-                                        </Navbar.Brand>
-                                        <Button onClick={handleLogOut} variant="outline-success">  Logout</Button>
+                                        <Button
+                                        className='mx-3'
+                                        onClick={handleLogOut} variant="outline-success">  Logout</Button>
                                     </>
                                     : <Button variant="outline-success"><Link to='/login' className='text-decoration-none' >Login</Link></Button>
                             }
