@@ -27,18 +27,20 @@ const Header = () => {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Navbar.Brand className='mt-1'>
+                            <Navbar.Brand className='mt-0'>
                                 <Link to='/' className='text-decoration-none'>Home</Link>
                             </Navbar.Brand>
 
-                            <Navbar.Brand className='mt-1'>
+                            <Navbar.Brand className='mt-0'>
                                 <Link to='/blog' className='text-decoration-none'>Blog</Link>
                             </Navbar.Brand>
 
                         </Nav>
                         <Form className="d-flex">
                             {
-                                user ?
+                                user && user.uid
+
+                                ?
                                     <>
                                         <OverlayTrigger
                                             placement="bottom"
@@ -46,11 +48,10 @@ const Header = () => {
                                         >
                                             <Image style={{ height: '40px' }} src={user?.photoURL} roundedCircle />
                                         </OverlayTrigger>
-
                                         <Button
                                         className='mx-3'
                                         onClick={handleLogOut} variant="outline-success">  Logout</Button>
-                                    </>
+                                    </> 
                                     : <Button variant="outline-success"><Link to='/login' className='text-decoration-none' >Login</Link></Button>
                             }
                         </Form>

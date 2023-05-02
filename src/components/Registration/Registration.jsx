@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Card, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
@@ -6,12 +6,14 @@ import { AuthContext } from '../../providers/AuthProviders';
 
 
 const Registration = () => {
-
+    const [error, setError] = useState('')
+    const [success, setSuccess] = useState('');
     const { registerUser, updateUserData } = useContext(AuthContext);
 
     const handelRegister = (event) => {
-
         event.preventDefault()
+        setSuccess('');
+        setError('');
         const form = event.target;
         const name = form.name.value;
         const photoURL = form.photo.value;
@@ -19,6 +21,9 @@ const Registration = () => {
         const email = form.email.value;
         const password = form.password.value;
 
+        if (password.length < 6) {
+            return setError('Password must be greater than 6 characters');
+        }
 
         registerUser(email, password)
             .then(result => {
@@ -26,6 +31,8 @@ const Registration = () => {
                 updateUserData(name, photoURL);
                 console.log(loggedUser);
                 form.reset();
+                setError('')
+                setSuccess('Successfully Register!')
             })
             .catch(error => {
                 console.log(error);
@@ -56,8 +63,12 @@ const Registration = () => {
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" name='password' placeholder="Password" required />
+                        {
+                            <p className='text-danger'>{error}</p>
+                            
+                        }
                     </Form.Group>
-
+                    <p className='text-success'>{success}</p>
 
                     <div className='text-center'>
                         <Button variant="primary" type="submit">
