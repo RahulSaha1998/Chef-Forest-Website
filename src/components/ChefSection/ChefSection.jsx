@@ -1,11 +1,12 @@
 import React from 'react';
-import { Button, Card, CardGroup, Col, Container, Row } from 'react-bootstrap';
+import { Button, Card, CardGroup, Container } from 'react-bootstrap';
 import './ChefSection.css'
-import { FaRegThumbsUp } from 'react-icons/fa';
+import { FaRegStar, FaRegThumbsUp, FaStar } from 'react-icons/fa';
+import Rating from 'react-rating';
 
 const ChefSection = ({ data }) => {
 
-    const { chefName, yearsOfExperience, numberOfRecipes, likes, ChefSpecial, chefPicture } = data;
+    const { chefName, yearsOfExperience, numberOfRecipes, likes, ChefSpecial, chefPicture, rating } = data;
 
     return (
         <Container className='mt-5'>
@@ -27,11 +28,31 @@ const ChefSection = ({ data }) => {
                             </p>
                         </Card.Text>
                         <Button variant="primary">View Recipes</Button>
+
                     </Card.Body>
-                    <Card.Footer className="text-muted"><FaRegThumbsUp></FaRegThumbsUp> {likes} likes</Card.Footer>
+                    <Card.Footer className="text-muted">
+                        <div className='d-flex justify-content-between '>
+                            <div>
+                                <FaRegThumbsUp></FaRegThumbsUp> {likes} likes
+                            </div>
+                            <div className='d-flex align-items-center justify-content-center gap-1'>
+                                <div className='mb-1'>
+                                    <Rating
+                                        placeholderRating={rating}
+                                        readonly
+                                        emptySymbol={<FaRegStar></FaRegStar>}
+                                        placeholderSymbol={<FaStar className='text-warning'></FaStar>}
+                                        fullSymbol={<FaStar></FaStar>}
+                                    />
+                                </div>
+                                <div>
+                                    {rating}
+                                </div>
+                            </div>
+                        </div>
+                    </Card.Footer>
                 </Card>
             </CardGroup>
-
         </Container>
     );
 };
