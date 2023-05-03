@@ -1,0 +1,34 @@
+.details-card {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  align-items: center;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  
+  /* Media query for medium screens */
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.footer-margin{
+  margin-right: 5px;
+}
+
+
+.bg {
+  background-color: rgb(232, 234, 241);
+}
+
+@media (min-width: 992px) {
+  .chef-img {
+    padding: 20px;
+    border-radius: 50%;
+    max-width: 100%;
+    height: auto;
+  }
+}

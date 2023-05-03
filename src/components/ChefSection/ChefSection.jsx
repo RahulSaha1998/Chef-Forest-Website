@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const ChefSection = ({ data }) => {
 
-    const { id, chefName, yearsOfExperience, likes, Recipe, chefPicture, rating } = data;
+    const { id, chefName, yearsOfExperience, likes, Recipe, chefPicture, rating, numberOfRecipes } = data;
 
     return (
         <Container className='mt-5'>
@@ -18,15 +18,7 @@ const ChefSection = ({ data }) => {
                         <Card.Title>{chefName}</Card.Title>
                         <Card.Text>
                             <p>Experience: {yearsOfExperience} years+</p>
-                            <p>Recipe:
-                                <ul>
-                                    <li>{Recipe[0]}</li>
-                                    <li>{Recipe[1]}</li>
-                                    <li>{Recipe[2]}</li>
-                                    <li>{Recipe[3]}</li>
-                                    <li>{Recipe[4]}</li>
-                                </ul>
-                            </p>
+                            <p>Recipe item:  {numberOfRecipes}+</p>
                         </Card.Text>
                         <Link to={`/chefRecipe/${id}`}>
                             <Button variant="primary">View Recipes</Button>

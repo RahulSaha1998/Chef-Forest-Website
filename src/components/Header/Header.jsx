@@ -52,7 +52,7 @@ const Header = () => {
                                         className='mx-3'
                                         onClick={handleLogOut} variant="outline-success">  Logout</Button>
                                     </> 
-                                    : <Button variant="outline-success"><Link to='/login' className='text-decoration-none' >Login</Link></Button>
+                                    : <Link to='/login' className='text-decoration-none' ><Button variant="outline-success">Login</Button></Link>
                             }
                         </Form>
                     </Navbar.Collapse>
