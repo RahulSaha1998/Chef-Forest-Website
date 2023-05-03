@@ -18,6 +18,8 @@ import PrivateRoute from './routes/PrivateRoute.jsx';
 import ChefDetails from './components/ChefDetails/ChefDetails.jsx';
 
 
+
+
 const router = createBrowserRouter([
   {
     path: "/",
