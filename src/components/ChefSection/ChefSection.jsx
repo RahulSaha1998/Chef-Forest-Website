@@ -25,8 +25,6 @@ const ChefSection = ({ data }) => {
                                 </Link>
                             </div>
                         </Card.Text>
-
-
                     </Card.Body>
                     <Card.Footer className="text-muted">
                         <div className='d-flex justify-content-between '>

@@ -6,6 +6,7 @@ import { useLoaderData, useParams } from 'react-router-dom';
 import './Home.css'
 import Loader from '../loader/Loader';
 import { AuthContext } from '../../providers/AuthProviders';
+import RecipeCategory from '../RecipeCategory/RecipeCategory';
 
 const Home = () => {
 
@@ -37,6 +38,11 @@ const Home = () => {
                         }
     
                         </div>
+                    </div>
+                    <div>
+                    <h3 className='text-center mt-5'>Recipe Category </h3>
+                        <hr />
+                        <RecipeCategory></RecipeCategory>
                     </div>
                 </div>
             </Container>
