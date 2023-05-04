@@ -10,7 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@progress/kendo-react-pdf": "^5.13.1",
+    "@react-pdf/renderer": "^3.1.9",
     "bootstrap": "^5.2.3",
+    "file-saver": "^2.0.5",
     "firebase": "^9.21.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
@@ -21,8 +24,11 @@
     "react-fast-marquee": "^1.5.2",
     "react-icons": "^4.8.0",
     "react-lazy-load": "^4.0.1",
+    "react-pdf": "^6.2.2",
     "react-rating": "^2.0.5",
     "react-router-dom": "^6.11.0",
+    "react-to-pdf": "^0.0.14",
+    "react-to-print": "^2.14.12",
     "react-toastify": "^9.1.2",
     "sort-by": "^1.2.0"
   },
