@@ -13,7 +13,6 @@ const Home = () => {
 
     const { id } = useParams();
     const allData = useLoaderData();
-    console.log(allData);
     const { user, loading } = useContext(AuthContext);
 
     if (loading) {
