@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Button, Container, Nav, Navbar, Form, Image, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { NavLink, Link } from 'react-router-dom';
+import {  NavLink, Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 import './Header.css'
 const Header = () => {
@@ -28,11 +28,13 @@ const Header = () => {
                             navbarScroll
                         >
                             <Nav.Item>
-                                <NavLink exact to='/' className='nav-link' activeClassName='active'>Home</NavLink>
+                                <NavLink exact to='/' className='nav-link'
+                                style={{ color: 'blue' }} activeClassName='active'>Home</NavLink>
                             </Nav.Item>
 
                             <Nav.Item>
-                                <NavLink exact to='/blog' className='nav-link' activeClassName='active'>Blog</NavLink>
+                                <NavLink exact to='/blog'
+                                style={{ color: 'blue' }} className='nav-link ' activeClassName='active'>Blog</NavLink>
                             </Nav.Item>
 
                         </Nav>

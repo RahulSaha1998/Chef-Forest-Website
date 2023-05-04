@@ -1,4 +1,4 @@
-.active {
-    color: rgb(115, 20, 20);
-    /* background: red; */
+.active{
+    background-color: antiquewhite;
+    border-radius: 10px;
 }
