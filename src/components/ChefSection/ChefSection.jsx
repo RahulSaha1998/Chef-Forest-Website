@@ -19,8 +19,13 @@ const ChefSection = ({ data }) => {
                         <Card.Text>
                             <p>Experience: {yearsOfExperience} years+</p>
                             <p>Recipe item:  {numberOfRecipes}+</p>
+                            <div>
+                                <Link to={`/chefRecipe/${id}`}>
+                                    <Button variant="outline-danger">View Recipes</Button>
+                                </Link>
+                            </div>
                         </Card.Text>
-                        
+
 
                     </Card.Body>
                     <Card.Footer className="text-muted">
@@ -28,13 +33,23 @@ const ChefSection = ({ data }) => {
                             <div>
                                 <FaRegThumbsUp className='mb-1 text-danger'></FaRegThumbsUp> {likes} likes
                             </div>
-                            
-                            <div>
-                            <Link to={`/chefRecipe/${id}`}>
-                            <Button variant="outline-danger">View Recipes</Button>
-                        </Link>
+
+                            <div className='d-flex align-items-center gap-1'>
+                                <div className='mb-1'>
+                                    <Rating
+                                        placeholderRating={rating}
+                                        readonly
+                                        emptySymbol={<FaRegStar></FaRegStar>}
+                                        placeholderSymbol={<FaStar className='text-warning'></FaStar>}
+                                        fullSymbol={<FaStar></FaStar>}
+                                    />
+                                </div>
+                                <div>
+                                    {rating}
+                                </div>
                             </div>
                         </div>
+
                     </Card.Footer>
                 </Card>
             </CardGroup>

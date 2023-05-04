@@ -14,8 +14,6 @@ const Home = () => {
     console.log(allData);
     const { user, loading } = useContext(AuthContext);
 
-
-
     if (loading) {
         return <Loader></Loader>
     }
