@@ -1,6 +1,6 @@
 ## Hello, there is some features and live website link of this project.
 
-- Live Link -> https://melodic-pegasus-f2b864.netlify.app/
+- Firebase Live Link -> https://assignment-10-with-fireb-d1410.web.app
 
 
 - First we create a navbar and there contains a name and some links and the navbar and footer is common for all the roots.
