@@ -13,16 +13,14 @@ const Blog = () => {
     }
     else if (user) {
         return (
-            <Container>
-    
+            <Container> 
                 <h2>Hello from blogs</h2>
             </Container>
         );
     }
     else{
         return (
-            <Container>
-    
+            <Container>   
                 <h2>Hello from blogs</h2>
             </Container>
         );

@@ -16,6 +16,7 @@ import Blog from './components/Blog/Blog.jsx';
 import AuthProviders from './providers/AuthProviders.jsx';
 import PrivateRoute from './routes/PrivateRoute.jsx';
 import ChefDetails from './components/ChefDetails/ChefDetails.jsx';
+import NotFound from './components/NotFound/NotFound.jsx';
 
 
 
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
         element: <PrivateRoute><ChefDetails></ChefDetails></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/details/${params.id}`)
       },
+      {
+        path: '*',
+        element: <NotFound></NotFound>
+      }
     ]
   },
 ]);
