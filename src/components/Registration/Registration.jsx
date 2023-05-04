@@ -1,18 +1,25 @@
 import React, { useContext, useState } from 'react';
 import { Button, Card, Container, Form } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 import { ToastContainer, toast } from 'react-toastify';
 import './Registration.css'
-
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 
 
 const Registration = () => {
+
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('');
-    const { registerUser, updateUserData, logOut } = useContext(AuthContext);
+
+    const { registerUser, updateUserData, logOut, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
+
     const navigate = useNavigate();
+    const location = useLocation();
+    console.log(location);
+
+    const from =  location.state?.from?.pathname || '/';
 
     const handelRegister = (event) => {
         event.preventDefault()
@@ -39,10 +46,37 @@ const Registration = () => {
                 setError('')
                 setSuccess('Successfully Register!');
                 toast('Successfully Register!');
-                navigate('/login')
+                navigate('/login');
                 alert('successfully Register!');
+                    
+            })
+            .catch(error => {
+                console.log(error);
+            })
 
-                    ;
+    }
+    const GoogleSignIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                navigate(from, {replace: true})
+
+            })
+            .catch(error => {
+                console.log(error);
+                setError(error.message)
+
+            })
+    }
+
+    const handleGithubSignIn = () => {
+        signInWithGithub()
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                navigate(from, {replace: true})
+
             })
             .catch(error => {
                 console.log(error);
@@ -60,11 +94,11 @@ const Registration = () => {
                 <Form onSubmit={handelRegister}>
                     <Form.Group className="mb-3">
                         <Form.Label>Name</Form.Label>
-                        <Form.Control type="text" name='name' placeholder="Your Name" required />
+                        <Form.Control type="text" name='name' placeholder="Your Name"  />
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Photo URL</Form.Label>
-                        <Form.Control type="text" name='photo' placeholder="Photo URL" required />
+                        <Form.Control type="text" name='photo' placeholder="Photo URL" />
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Email address</Form.Label>
@@ -91,7 +125,13 @@ const Registration = () => {
                         Already Have an Account? <Link to="/login">Login</Link>
                     </Form.Text>
                     <Form.Text className="text-success">
-
+                    <div className='text-start mt-3'>
+                            <Button onClick={GoogleSignIn} className='mb-2' variant="outline-primary"> <FaGoogle /> Login with Google</Button>
+                            <br />
+                            <Button
+                                onClick={handleGithubSignIn}
+                                variant="outline-secondary"> <FaGithub></FaGithub> Login with Github</Button>
+                        </div>
                     </Form.Text>
                     <Form.Text className="text-danger">
 

@@ -2,27 +2,25 @@ import React, { useContext, useState } from 'react';
 import { Button, Card, Container, Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
-import { FaGoogle, FaGithub, FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
-import Loader from '../loader/Loader';
+import { FaGoogle, FaGithub } from 'react-icons/fa';
+;
 import './Login.css'
 
 
-
 const Login = () => {
+
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('');
 
-    const { signIn, signInWithGoogle, signInWithGithub, loading } = useContext(AuthContext);
+    const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
 
     const navigate = useNavigate();
     const location = useLocation();
     console.log(location);
 
-    const from =  location.state?.from?.pathname || '/';
+    const from = location.state?.from?.pathname || '/';
 
-    if (loading) {
-        return <Loader></Loader>
-    }
+
 
     const handelLogin = (event) => {
         event.preventDefault()
@@ -40,7 +38,7 @@ const Login = () => {
                 setError('');
                 form.reset();
                 setSuccess('successfully Login!');
-                navigate(from, {replace: true})
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error);
@@ -53,7 +51,7 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                navigate(from, {replace: true})
+                navigate(from, { replace: true })
 
             })
             .catch(error => {
@@ -68,7 +66,7 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                navigate(from, {replace: true})
+                navigate(from, { replace: true })
 
             })
             .catch(error => {
@@ -98,9 +96,11 @@ const Login = () => {
                         <div>
                             <p className='text-danger'>{error}</p>
                             <p className='text-success'>{success}</p>
-                            <Button variant="primary" type="submit">
-                                Login
-                            </Button>
+                            <div className='text-start'>
+                                <Button variant="primary" type="submit">
+                                    Login
+                                </Button>
+                            </div>
                             <br />
                             <Form.Text className="text-secondary">
                                 Don't Have an Account? <Link to="/register">Register</Link>
