@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <Container className='mt-5'>
             <Navbar bg="dark" variant="dark" className='rounded' style={{ height: '200px' }}>
-                <Container>
+                <Container className='d-flex mx-5 justify-content-center'>
                     <Navbar.Text>
                         © 2023 Example Company. All rights reserved. 
                         <li>Address: "123 Main St, Anytown USA"</li>

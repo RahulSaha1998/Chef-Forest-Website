@@ -1,20 +1,23 @@
 import React from 'react';
-import { Button, Card, CardGroup, Container, Image } from 'react-bootstrap';
-import './ChefSection.css'
+import { Button, Card, CardGroup, Container } from 'react-bootstrap';
+import './ChefSection.css';
 import { FaRegStar, FaRegThumbsUp, FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import LazyLoad from 'react-lazy-load';
+// import LazyLoad from 'react-lazyload';
 
 const ChefSection = ({ data }) => {
 
-    const { id, chefName, yearsOfExperience, likes, Recipe, chefPicture, rating, numberOfRecipes } = data;
+    const { id, chefName, yearsOfExperience, likes, chefPicture, rating, numberOfRecipes } = data;
 
     return (
         <Container className='mt-5'>
             <CardGroup>
                 <Card className="custom-card shadow bg-white">
-                    <Card.Img variant="top" src={chefPicture} />
+                    <LazyLoad once>
+                        <Card.Img variant="top" src={chefPicture} className='lazyload' alt={chefName} />
+                    </LazyLoad>
                     <Card.Body>
                         <Card.Title>{chefName}</Card.Title>
                         <Card.Text>
@@ -50,11 +53,10 @@ const ChefSection = ({ data }) => {
                         </div>
 
                     </Card.Footer>
-                </Card>               
+                </Card>
             </CardGroup>
         </Container>
     );
 };
 
 export default ChefSection;
-
