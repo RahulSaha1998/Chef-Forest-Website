@@ -50,9 +50,9 @@ const Header = () => {
                                         </OverlayTrigger>
                                         <Button
                                         className='mx-3'
-                                        onClick={handleLogOut} variant="outline-success">  Logout</Button>
+                                        onClick={handleLogOut} variant="danger">  Logout</Button>
                                     </> 
-                                    : <Link to='/login' className='text-decoration-none' ><Button variant="outline-success">Login</Button></Link>
+                                    : <Link to='/login' className='text-decoration-none' ><Button variant="danger">Login</Button></Link>
                             }
                         </Form>
                     </Navbar.Collapse>

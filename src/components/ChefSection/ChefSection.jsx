@@ -22,7 +22,7 @@ const ChefSection = ({ data }) => {
                             <p>Recipe item:  {numberOfRecipes}+</p>
                             <div>
                                 <Link to={`/chefRecipe/${id}`}>
-                                    <Button variant="outline-danger">View Recipes</Button>
+                                    <Button variant="danger">View Recipes</Button>
                                 </Link>
                             </div>
                         </Card.Text>
