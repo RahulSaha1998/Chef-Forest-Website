@@ -11,7 +11,15 @@ const Blog = () => {
     if (loading) {
         return <Loader></Loader>
     }
-    if (user) {
+    else if (user) {
+        return (
+            <Container>
+    
+                <h2>Hello from blogs</h2>
+            </Container>
+        );
+    }
+    else{
         return (
             <Container>
     

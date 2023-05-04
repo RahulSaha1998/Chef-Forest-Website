@@ -17,9 +17,9 @@ const Home = () => {
     const { user, loading } = useContext(AuthContext);
 
     if (loading) {
-        return <Loader></Loader>
+         return <Loader></Loader>
     }
-    if (user) {
+    else if (user){
         return (
             <Container>
                 <div>
@@ -52,6 +52,42 @@ const Home = () => {
             </Container>
         );
     }
+    else{
+        return (
+            <Container>
+                <div>
+                    <div>
+                        <Banner></Banner>
+                    </div>
+                    <div>
+                        <h3 className='text-center mt-5'>Chef Section</h3>
+                        <hr />
+                        <div className='layout' >
+                        {
+                            allData.map(data => <ChefSection
+                                key={data.id}
+                                data={data}
+                            >
+                            </ChefSection>)
+                        }
+    
+                        </div>
+                    </div>
+                    <div>
+                    <h3 className='text-center mt-5'>Recipe Category </h3>
+                        <hr />
+                        <RecipeCategory></RecipeCategory>
+                    </div>
+                    <div>
+                        <Chefs></Chefs>
+                    </div>
+                </div>
+            </Container>
+        );
+    }
+    
+        
+    
 
     
 };
