@@ -1,0 +1,14 @@
+/* For large screens */
+@media screen and (min-width: 1200px) {
+    .register {
+      width: 25%;
+    }
+  }
+  
+  /* For medium screens */
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    .register {
+      width: 50%;
+    }
+  }
+  

@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 import { FaGoogle, FaGithub, FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import Loader from '../loader/Loader';
+import './Login.css'
 
 
 
@@ -76,7 +77,7 @@ const Login = () => {
     }
 
     return (
-        <Container className='w-25 mx-auto mt-5'>
+        <Container className='login mx-auto mt-5'>
             <div className='text-center'>
                 <h3>Please Login!</h3>
                 <hr />

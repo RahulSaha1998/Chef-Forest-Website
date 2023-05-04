@@ -3,7 +3,7 @@ import { Button, Card, Container, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 import { ToastContainer, toast } from 'react-toastify';
-
+import './Registration.css'
 
 
 
@@ -50,7 +50,7 @@ const Registration = () => {
     }
 
     return (
-        <Container className='w-25 mx-auto mt-5'>
+        <Container className='register mx-auto mt-5'>
             <div className='text-center'>
                 <h3>Register Here!</h3>
                 <ToastContainer />
