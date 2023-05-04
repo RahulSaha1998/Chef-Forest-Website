@@ -1,9 +1,10 @@
 import React from 'react';
-import { Button, Card, CardGroup, Container } from 'react-bootstrap';
+import { Button, Card, CardGroup, Container, Image } from 'react-bootstrap';
 import './ChefSection.css'
 import { FaRegStar, FaRegThumbsUp, FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 const ChefSection = ({ data }) => {
 
@@ -49,7 +50,7 @@ const ChefSection = ({ data }) => {
                         </div>
 
                     </Card.Footer>
-                </Card>
+                </Card>               
             </CardGroup>
         </Container>
     );

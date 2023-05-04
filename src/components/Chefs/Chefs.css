@@ -1,0 +1,12 @@
+.chef-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    
+    /* Media query for medium screens */
+    @media screen and (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+      
+    }
+  }
+
+  

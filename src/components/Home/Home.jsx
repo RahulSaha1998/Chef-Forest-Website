@@ -7,6 +7,7 @@ import './Home.css'
 import Loader from '../loader/Loader';
 import { AuthContext } from '../../providers/AuthProviders';
 import RecipeCategory from '../RecipeCategory/RecipeCategory';
+import Chefs from '../Chefs/Chefs';
 
 const Home = () => {
 
@@ -43,6 +44,9 @@ const Home = () => {
                     <h3 className='text-center mt-5'>Recipe Category </h3>
                         <hr />
                         <RecipeCategory></RecipeCategory>
+                    </div>
+                    <div>
+                        <Chefs></Chefs>
                     </div>
                 </div>
             </Container>
