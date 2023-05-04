@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Button, Card, Container, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 import { FaGoogle, FaGithub, FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import Loader from '../loader/Loader';
@@ -12,6 +12,12 @@ const Login = () => {
     const [success, setSuccess] = useState('');
 
     const { signIn, signInWithGoogle, signInWithGithub, loading } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    console.log(location);
+
+    const from =  location.state?.from?.pathname || '/';
 
     if (loading) {
         return <Loader></Loader>
@@ -33,6 +39,7 @@ const Login = () => {
                 setError('');
                 form.reset();
                 setSuccess('successfully Login!');
+                navigate(from, {replace: true})
             })
             .catch(error => {
                 console.log(error);
@@ -45,6 +52,8 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                navigate(from, {replace: true})
+
             })
             .catch(error => {
                 console.log(error);
@@ -58,6 +67,8 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                navigate(from, {replace: true})
+
             })
             .catch(error => {
                 console.log(error);

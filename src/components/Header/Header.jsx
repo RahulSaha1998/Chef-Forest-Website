@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Button, Container, Nav, Navbar, Form, Image, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
-
+import './Header.css'
 const Header = () => {
 
     const { user, logOut } = useContext(AuthContext);
@@ -27,18 +27,18 @@ const Header = () => {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Navbar.Brand className='mt-0'>
-                                <Link to='/' className='text-decoration-none'>Home</Link>
-                            </Navbar.Brand>
+                            <Nav.Item>
+                                <NavLink exact to='/' className='nav-link' activeClassName='active'>Home</NavLink>
+                            </Nav.Item>
 
-                            <Navbar.Brand className='mt-0'>
-                                <Link to='/blog' className='text-decoration-none'>Blog</Link>
-                            </Navbar.Brand>
+                            <Nav.Item>
+                                <NavLink exact to='/blog' className='nav-link' activeClassName='active'>Blog</NavLink>
+                            </Nav.Item>
 
                         </Nav>
                         <Form className="d-flex">
                             {
-                                user && user.uid
+                                user
 
                                 ?
                                     <>

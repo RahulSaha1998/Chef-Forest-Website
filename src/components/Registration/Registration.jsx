@@ -1,14 +1,18 @@
 import React, { useContext, useState } from 'react';
 import { Button, Card, Container, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
+import { ToastContainer, toast } from 'react-toastify';
+
+
 
 
 
 const Registration = () => {
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('');
-    const { registerUser, updateUserData } = useContext(AuthContext);
+    const { registerUser, updateUserData, logOut } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handelRegister = (event) => {
         event.preventDefault()
@@ -29,10 +33,16 @@ const Registration = () => {
             .then(result => {
                 const loggedUser = result.user;
                 updateUserData(name, photoURL);
+                logOut()
                 console.log(loggedUser);
                 form.reset();
                 setError('')
-                setSuccess('Successfully Register!')
+                setSuccess('Successfully Register!');
+                toast('Successfully Register!');
+                navigate('/login')
+                alert('successfully Register!');
+
+                    ;
             })
             .catch(error => {
                 console.log(error);
@@ -43,6 +53,7 @@ const Registration = () => {
         <Container className='w-25 mx-auto mt-5'>
             <div className='text-center'>
                 <h3>Register Here!</h3>
+                <ToastContainer />
                 <hr />
             </div>
             <Card className='p-2 shadow p-3 mb-5 bg-white rounded'>
@@ -65,7 +76,7 @@ const Registration = () => {
                         <Form.Control type="password" name='password' placeholder="Password" required />
                         {
                             <p className='text-danger'>{error}</p>
-                            
+
                         }
                     </Form.Group>
                     <p className='text-success'>{success}</p>

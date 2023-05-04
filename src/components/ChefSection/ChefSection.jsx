@@ -20,29 +20,19 @@ const ChefSection = ({ data }) => {
                             <p>Experience: {yearsOfExperience} years+</p>
                             <p>Recipe item:  {numberOfRecipes}+</p>
                         </Card.Text>
-                        <Link to={`/chefRecipe/${id}`}>
-                            <Button variant="primary">View Recipes</Button>
-                        </Link>
+                        
 
                     </Card.Body>
                     <Card.Footer className="text-muted">
                         <div className='d-flex justify-content-between '>
                             <div>
-                                <FaRegThumbsUp className='mb-1'></FaRegThumbsUp> {likes} likes
+                                <FaRegThumbsUp className='mb-1 text-danger'></FaRegThumbsUp> {likes} likes
                             </div>
-                            <div className='d-flex align-items-center justify-content-center gap-1'>
-                                <div className='mb-1'>
-                                    <Rating
-                                        placeholderRating={rating}
-                                        readonly
-                                        emptySymbol={<FaRegStar></FaRegStar>}
-                                        placeholderSymbol={<FaStar className='text-warning'></FaStar>}
-                                        fullSymbol={<FaStar></FaStar>}
-                                    />
-                                </div>
-                                <div>
-                                    {rating}
-                                </div>
+                            
+                            <div>
+                            <Link to={`/chefRecipe/${id}`}>
+                            <Button variant="outline-danger">View Recipes</Button>
+                        </Link>
                             </div>
                         </div>
                     </Card.Footer>
